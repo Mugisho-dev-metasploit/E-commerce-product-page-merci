@@ -186,8 +186,8 @@ body {
 }
 
 .discount-badge {
-    background-color: var(--color-pale-orange);
-    color: var(--color-orange);
+    color: var(--color-white);
+    background-color: var(--color-very-dark-blue);
     font-size: 0.875rem;
     font-weight: var(--font-weight-bold);
     padding: 0.25rem 0.5rem;
