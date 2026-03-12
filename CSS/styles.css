@@ -43,6 +43,9 @@ body {
     max-width: 1440px;
     margin: 0 auto;
     padding: 3rem 2rem;
+}
+
+.product-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
