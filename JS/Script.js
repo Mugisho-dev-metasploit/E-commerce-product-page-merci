@@ -336,9 +336,7 @@ function updateCartBadge() {
     }
 }
 
-// =====================================================
 // CART DROPDOWN TOGGLE
-// =====================================================
 const cartBtn = document.getElementById('cartBtn');
 
 if (cartBtn) {
@@ -373,9 +371,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// =====================================================
 // CHECKOUT
-// =====================================================
 const checkoutBtn = document.querySelector('.checkout-btn');
 
 if (checkoutBtn) {
@@ -406,10 +402,8 @@ function processCheckout() {
         showNotification('Your cart is currently empty.');
     }
 }
-
-// =====================================================
+  
 // UTILITY FUNCTIONS
-// =====================================================
 
 function showNotification(message) {
     // Create notification element
