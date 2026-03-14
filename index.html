@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <!-- ISSUE 1: INITIAL SETUP - HTML5 semantic structure and meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +16,7 @@
     <link rel="stylesheet" href="./CSS/styles.css">
 </head>
 
-
 <body>
-
     <!-- ISSUE 10: POLISH & ACCESSIBILITY - Skip to content link for keyboard navigation -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
@@ -52,7 +49,6 @@
                         <span class="cart-badge" id="cartBadge" aria-label="Number of items in cart">0</span>
                     </button>
                     <!-- ISSUE 8: CART DROPDOWN - Shopping cart with items and checkout -->
-
                     <div class="cart-dropdown" id="cartDropdown" hidden>
                         <h2>Cart</h2>
                         <div class="cart-content-wrapper">
@@ -74,6 +70,7 @@
             </div>
         </div>
     </header>
+
     <!-- ISSUE 3: MOBILE MENU - Hamburger menu overlay for mobile navigation -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <div class="mobile-nav-drawer">
@@ -150,8 +147,9 @@
                     <div class="pricing-container">
                         <span class="current-price">$125.00</span>
                         <span class="discount-badge">50%</span>
+                        <span class="original-price">$250.00</span>
                     </div>
-                    <span class="original-price">$250.00</span>
+                
                 </div>
 
                 <!-- ACTIONS (QUANTITY + ADD TO CART) -->
@@ -166,6 +164,7 @@
                             <img src="./images/icon-plus.svg" alt="Plus">
                         </button>
                     </div>
+
                     <!-- ISSUE 7: ADD TO CART BUTTON - Add product to cart functionality -->
                     <button class="add-to-cart-btn" id="addToCartBtn">
                         <img src="./images/icon-cart.svg" alt="Cart">
@@ -175,6 +174,7 @@
             </div>
         </section>
     </main>
+
     <!-- ISSUE 10: LIGHTBOX - Desktop image viewer with navigation and keyboard support -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
@@ -207,7 +207,6 @@
     </div>
 
     <script src="./JS/Script.js"></script>
-
-
-
 </body>
+
+</html>

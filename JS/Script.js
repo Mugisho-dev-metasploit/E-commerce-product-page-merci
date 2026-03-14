@@ -1,64 +1,3 @@
-
-
-
-
-// ===================================================== 
-// GLOBAL VARIABLES & CONSTANTS
-// ===================================================== 
-let currentImageIndex = 0;
-const images = [
-    './images/image-product-1.jpg',
-    './images/image-product-2.jpg',
-    './images/image-product-3.jpg',
-    './images/image-product-4.jpg'
-];
-
-// Responsive design helper
-function getScreenSize() {
-    const width = window.innerWidth;
-    if (width <= 480) return 'mobile';
-    if (width <= 768) return 'tablet';
-    return 'desktop';
-}
-
-// ===================================================== 
-// ISSUE 3: HEADER & MOBILE NAVIGATION
-// Responsive header with hamburger menu for mobile
-// ===================================================== 
-const menuToggle = document.getElementById('menuToggle');
-const closeMenu = document.getElementById('closeMenu');
-const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-
-if (menuToggle && closeMenu && mobileNavOverlay) {
-    menuToggle.addEventListener('click', () => {
-        mobileNavOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scroll
-    });
-
-    closeMenu.addEventListener('click', () => {
-        mobileNavOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scroll
-    });
-
-    // Close on link click
-    const mobileLinks = mobileNavOverlay.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Close on outside click
-    mobileNavOverlay.addEventListener('click', (e) => {
-        if (e.target === mobileNavOverlay) {
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-}
-
-
 // ===================================================== 
 // ISSUE 4: PRODUCT IMAGE GALLERY
 // Main image gallery with thumbnail selection
@@ -93,13 +32,6 @@ function switchImage() {
     // Update current image index for lightbox
     currentImageIndex = images.findIndex(img => img === newImageSrc);
 }
-
-// ===================================================== 
-// ISSUE 5: PRODUCT INFORMATION
-// Product info display with title, description, and pricing
-// ===================================================== 
-// ISSUE 5 handled in HTML and CSS
-
 // ===================================================== 
 // ISSUE 10: LIGHTBOX FUNCTIONALITY
 // Desktop image viewer with keyboard navigation
@@ -111,18 +43,23 @@ const lightboxClose = document.querySelector('.lightbox-close');
 const lightboxPrev = document.querySelector('.lightbox-prev');
 const lightboxNext = document.querySelector('.lightbox-next');
 
-// Open lightbox on main image click
+let currentImageIndex = 0;
+const images = [
+    './images/image-product-1.jpg',
+    './images/image-product-2.jpg',
+    './images/image-product-3.jpg',
+    './images/image-product-4.jpg'
+];
+
+// Open lightbox
 mainImage.addEventListener('click', openLightbox);
 
 function openLightbox() {
-    // Only show lightbox on desktop screens
-    if (getScreenSize() === 'desktop') {
-        updateLightboxImage();
-        updateLightboxThumbnails();
-        lightbox.style.display = 'flex';
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
-    }
+    updateLightboxImage();
+    updateLightboxThumbnails();
+    lightbox.style.display = 'flex';
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
 }
 
 // Close lightbox
@@ -141,14 +78,14 @@ lightbox.addEventListener('click', function(e) {
     }
 });
 
-// Close on Escape key
+// Close on Escape
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && lightbox.style.display === 'flex') {
         closeLightbox();
     }
 });
 
-// Previous image navigation
+// Previous image
 lightboxPrev.addEventListener('click', prevImage);
 
 function prevImage() {
@@ -157,7 +94,7 @@ function prevImage() {
     updateLightboxThumbnails();
 }
 
-// Next image navigation
+// Next image
 lightboxNext.addEventListener('click', nextImage);
 
 function nextImage() {
@@ -166,7 +103,7 @@ function nextImage() {
     updateLightboxThumbnails();
 }
 
-// Keyboard navigation (Arrow keys)
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
     if (lightbox.style.display === 'flex') {
         if (e.key === 'ArrowLeft') {
@@ -177,7 +114,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Lightbox thumbnail click
+// Thumbnail click in lightbox
 lightboxThumbnails.forEach((thumb, index) => {
     thumb.addEventListener('click', function() {
         currentImageIndex = index;
@@ -200,6 +137,31 @@ function updateLightboxImage() {
 
 function updateLightboxThumbnails() {
     lightboxThumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+// Mobile gallery navigation
+const mobilePrev = document.getElementById('mobilePrev');
+const mobileNext = document.getElementById('mobileNext');
+
+if (mobilePrev && mobileNext) {
+    mobilePrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevImage();
+        syncMainImage();
+    });
+    
+    mobileNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextImage();
+        syncMainImage();
+    });
+}
+
+function syncMainImage() {
+    mainImage.src = images[currentImageIndex];
+    thumbnails.forEach((thumb, index) => {
         thumb.classList.toggle('active', index === currentImageIndex);
     });
 }
@@ -454,7 +416,7 @@ function processCheckout() {
         showNotification('Your cart is currently empty.');
     }
 }
-
+  
 // UTILITY FUNCTIONS
 
 function showNotification(message) {
@@ -478,50 +440,42 @@ function showNotification(message) {
 }
 
 // ===================================================== 
-// ISSUE 9: RESPONSIVE DESIGN
-// Mobile, tablet, and desktop responsive layout
+// ISSUE 3: HEADER & MOBILE NAVIGATION
+// Responsive header with hamburger menu for mobile
 // ===================================================== 
-// Track current screen size
-let currentScreenSize = getScreenSize();
+const menuToggle = document.getElementById('menuToggle');
+const closeMenu = document.getElementById('closeMenu');
+const mobileNavOverlay = document.getElementById('mobileNavOverlay');
 
-// Listen for window resize and adjust layout
-window.addEventListener('resize', () => {
-    const newScreenSize = getScreenSize();
-    if (newScreenSize !== currentScreenSize) {
-        currentScreenSize = newScreenSize;
-        // Adjust layout on screen size change
-        adjustResponsiveLayout();
-    }
-});
+if (menuToggle && closeMenu && mobileNavOverlay) {
+    menuToggle.addEventListener('click', () => {
+        mobileNavOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+    });
 
-function adjustResponsiveLayout() {
-    // Close cart dropdown when switching screen sizes
-    if (cartDropdown && !cartDropdown.hasAttribute('hidden')) {
-        cartDropdown.setAttribute('hidden', '');
-        cartDropdown.setAttribute('aria-hidden', 'true');
-    }
-    
-    // Close mobile menu when switching to desktop
-    if (currentScreenSize === 'desktop' && mobileNavOverlay && mobileNavOverlay.classList.contains('active')) {
+    closeMenu.addEventListener('click', () => {
         mobileNavOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+        document.body.style.overflow = ''; // Restore scroll
+    });
+
+    // Close on link click
+    const mobileLinks = mobileNavOverlay.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close on outside click
+    mobileNavOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileNavOverlay) {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 }
 
-if (mobilePrev && mobileNext) {
-    mobilePrev.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-        updateLightboxImage();
-    });
-    
-    mobileNext.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        updateLightboxImage();
-    });
-}
-
-// ===================================================== 
-// INITIALIZATION & LOGGING
-// ===================================================== 
+// Initialize
+updateCartDisplay();
+console.log('✓ Script loaded successfully');
