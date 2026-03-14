@@ -86,11 +86,49 @@
         </div>
     </div>
 
+<main class="container" id="main-content">
+    <!-- ISSUE 4 & 5: PRODUCT SECTION - Product gallery and information layout -->
+        <section class="product-section" aria-label="Product details">
+            <!-- ISSUE 4: PRODUCT GALLERY - Main image and thumbnail gallery -->
+
+            <div class="product-gallery">
+                <!-- Main Product Image -->
+                <div class="main-image-wrapper">
+                    <button class="mobile-gallery-btn prev" id="mobilePrev" aria-label="Previous image">
+                        <img src="./images/icon-previous.svg" alt="">
+                    </button>
+                    <img src="./images/image-product-1.jpg" 
+                         alt="Product image 1" 
+                         class="main-image" 
+                         id="mainImage">
+                    <button class="mobile-gallery-btn next" id="mobileNext" aria-label="Next image"> 
+                        <img src="./images/icon-next.svg" alt="">
+                    </button>
+                </div>
+
+                <!-- Thumbnail Images -->
+                <div class="thumbnails">
+                    <div class="thumbnail active" data-image="./images/image-product-1.jpg" tabindex="0" role="button" aria-label="Product image 1">
+                        <img src="./images/image-product-1-thumbnail.jpg" alt="Product thumbnail 1">
+                    </div>
+                    <div class="thumbnail" data-image="./images/image-product-2.jpg" tabindex="0" role="button" aria-label="Product image 2">
+                        <img src="./images/image-product-2-thumbnail.jpg" alt="Product thumbnail 2">
+                    </div>
+                    <div class="thumbnail" data-image="./images/image-product-3.jpg" tabindex="0" role="button" aria-label="Product image 3">
+                        <img src="./images/image-product-3-thumbnail.jpg" alt="Product thumbnail 3">
+                    </div>
+                    <div class="thumbnail" data-image="./images/image-product-4.jpg" tabindex="0" role="button" aria-label="Product image 4">
+                        <img src="./images/image-product-4-thumbnail.jpg" alt="Product thumbnail 4">
+                    </div>
+                </div>
+            </div>
+        
+
+</main>
 
 
 
 
 
 
-    
 </body>
