@@ -478,3 +478,10 @@ body {
     filter: brightness(0) invert(1);
 }
 
+/* ISSUE 7: ADD TO CART BUTTON - Functional add to cart with styling */
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+

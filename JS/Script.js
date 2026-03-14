@@ -294,4 +294,63 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+// CHECKOUT
+const checkoutBtn = document.querySelector('.checkout-btn');
 
+if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', processCheckout);
+}
+
+function processCheckout() {
+    if (cart.length > 0) {
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        // Modal confirmation instead of simple alert
+        const confirmCheckout = confirm(
+            `Order Confirmation\n\n` +
+            `Total Items: ${totalQty}\n` +
+            `Total Amount: $${total.toFixed(2)}\n\n` +
+            `Proceed to checkout?`
+        );
+        
+        if (confirmCheckout) {
+            cart = [];
+            updateCartDisplay();
+            cartDropdown.setAttribute('hidden', '');
+            cartDropdown.setAttribute('aria-hidden', 'true');
+            showNotification('Your order has been successfully confirmed!');
+        }
+    } else {
+        showNotification('Your cart is currently empty.');
+    }
+}
+
+// UTILITY FUNCTIONS
+
+function showNotification(message) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'polite');
+    
+    document.body.appendChild(notification);
+    
+    // Trigger animation
+    setTimeout(() => notification.classList.add('show'), 10);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+
+
+
+// Initialize
+updateCartDisplay();
+console.log('✓ Script loaded successfully');
