@@ -15,3 +15,82 @@
     <link rel="stylesheet" href="./CSS/styles.css">  
 </head>
  
+ 
+<body>
+     <!-- ISSUE 3: HEADER & NAVIGATION - Responsive header with navigation -->   
+    
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
+                    <img src="./images/icon-menu.svg" alt="">
+                </button>
+                <div class="logo">
+                    <a href="/"><img src="./images/logo.svg" alt="Sneakers Logo"></a>
+                </div>
+                <nav class="desktop-nav" aria-label="Primary navigation">
+                    <ul>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">Men</a></li>
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="header-right">
+                <div class="cart-wrapper">
+                    <button class="cart-btn" id="cartBtn" aria-label="Shopping cart">
+                        <img src="./images/icon-cart.svg" alt="Cart">
+                        <span class="cart-badge" id="cartBadge" aria-label="Number of items in cart">0</span>
+                    </button>
+                    <!-- ISSUE 8: CART DROPDOWN - Shopping cart with items and checkout -->
+                    <div class="cart-dropdown" id="cartDropdown" hidden>
+                        <h2>Cart</h2>
+                        <div class="cart-content-wrapper">
+                            <div class="cart-empty">Your cart is empty.</div>
+                            <div class="cart-items">
+                            </div>
+                            <div class="cart-total">
+                                <strong>Total: <span id="cartTotal">$0.00</span></strong>
+                            </div>
+                            <button class="checkout-btn">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-avatar">
+                    <button class="avatar-btn" aria-label="User profile">
+                        <img src="./images/image-avatar.png" alt="User avatar">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ISSUE 3: MOBILE MENU - Hamburger menu overlay for mobile navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-drawer">
+            <button class="close-menu" id="closeMenu" aria-label="Close navigation menu">
+                <img src="./images/icon-close.svg" alt="">
+            </button>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    
+</body>
