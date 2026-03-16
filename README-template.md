@@ -11,8 +11,8 @@ This project helped me practice building a responsive product page with interact
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
     - [Links](#links)
-  - [My process](#my-process)
-    - [Built with](#built-with)
+- [My process](#my-process)
+  - [Built with](#built-with)
     - [What I learned](#what-i-learned)
   - [Author](#author)
 
@@ -38,15 +38,18 @@ Users should be able to:
 - Solution URL: [GitHub Repository](https://github.com/Mugisho-dev-metasploit/-E-commerce-Product-Page-challeger-Frontend-Mentor)
 - Live Site URL: [Live Site Demo](https://mugisho-dev-metasploit.github.io/-E-commerce-Product-Page-challeger-Frontend-Mentor/)
 
-## My process
+# My process
 
-### Built with
+## Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- CSS Grid & Flexbox
-- Mobile-first workflow
-- Vanilla JavaScript for interactions (cart, gallery, lightbox)
+- Semantic HTML5
+- CSS3
+- Flexbox
+- CSS Grid
+- Mobile-first responsive design
+- Vanilla JavaScript
+- Accessibility best practices
+
 
 ### What I learned
 
@@ -77,5 +80,3 @@ thumbnails.forEach(thumbnail => {
 
 - Name - mugisho ntashara
 - GitHub - [@Mugisho-dev-metasploit](https://github.com/Mugisho-dev-metasploit)
-
-
